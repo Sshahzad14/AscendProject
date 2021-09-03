@@ -220,4 +220,151 @@ Salesforce Einstein is the game-changing AI software that analyzes and presents 
 ## 7.2 Model Selection
 We made a comparison of the different models we had at our disposal in Einstein Analytics. We compared the Generalized Lineal Model (GLM), Random Forest and Gradient Boosting Machine (GBM). Our choice is based on the outcome of the comparison. GBMs are more accurate in predicting non-linear and interacting relationships and they also provide accurate results for each variables’ incremental impact.
 Random forest can be used for both regression and classification tasks. A benefit to the random forests is that you do not have to specify aspects such as interactions and because of this, it may discover patterns in your data. However, RF doesn’t extrapolate. When using a Random Forest Regressor, the predicted values are never outside the training set values for the target variable. This behavior becomes problematic in situations where the training and prediction inputs differ in their range and/or distributions.
-For GLMs, It’s well known that they are highly stable and transparent models. In th
+For GLMs, It’s well known that they are highly stable and transparent models. In the hands of “regression artists’’ at large insurance and financial institutions, they can also be highly accurate. That’s probably one of the reason why Einstein chooses GLM by default for its prediction models.
+However, as the 'no free lunch' theorem states, there is no one best model - every situation is different. And in our situation, we judged that GLM was a better option as it includes Logistic Regression which is the best option when the outcome is binary (yes/no in our case). And we also know that GLM are best when you have only one linear predictor in the systematic component (attriteIndicator in our case). And last but not least, we can use the regression line to extrapolate and predict values that are far from training data.
+
+## 7.3 Dataset Challenges
+Missing values:
+the dataset that was available to us was missing a couple of values. Our predictive analytics uses historical data to predict beneficiaries that are likely to attrite. Typically, historical data is used to build a mathematical model that captures important trends. That predictive model is then used on current data to predict what will happen next, or to suggest actions to take for optimal outcomes. However, our dataset was missing historical data. Some other important fields were also missing. For example, there wasn't a specific field that said a wealth transfer occurred between a client and their beneficiary. Getting that information would require digging into the data, one account at a time to check whether that wealth transfer happened. It’s worth mentioning that we were working in the QA environment for security reasons, but the same issues persisted in production.
+Our dataset was also unbalanced. As stated earlier, we were trying to build our predictive model in the QA environment, which doesn’t have accurate data. In our dataset, some accounts had assets exceeding $99 trillion, or they had unreasonable number of beneficiaries. Our model would definitely have been skewed if that unbalanced data was used to build it.
+
+
+# 8. Project Timeline
+* June 1:  Begin problem research
+* June 7:  Begin user interviews - millennials and FA's
+* June 11: First Sponsor meeting
+* June 14: Ideas pitched to team leads and mentors
+* June 21: Low-fidelity prototyping
+* June 25: Sponsor Update #1 - feedback on ideas and prototypes
+* July 6:  High-fidelity prototyping
+* July 12: Feedback from users
+* July 19: Implementation and iteration
+* July 30: Sponsor Update #2 - feedback on pitch and final solution
+* Aug 5:   Technical submission finalized
+* Aug 6:   Pitch, deck, demo video finalized
+
+
+# 9. Roadblocks
+Our team faced several challenges during the creation of our solution. The greatest challenge we faced was a lack of access to historical data due to security concerns and the current methods for storing and accessing data within Salesforce. Currently, RBC does not explicitly track wealth transfers within Salesforce. Instead, Account information is updated outside of Salesforce with no fields indicating whether a wealth transfer occurred. This made it challenging to identify past wealth transfers while gathering data for building our prediction model.
+
+Another challenge we faced was a limited time frame. As a U.S. team our group worked within a shortened timeline, starting several weeks later than our competitors. This made it difficult to 'catch up' to the other teams during the project timeline.
+
+Another roadblock for our team was learning new technology, specifically Salesforce with Tableau, Analytics Studio, and Einstein Analytics. These tools were all new to our team, but they're also new to RBC. Salesforce has only recently been implemented at RBC, so much of our research was done online or by working with vendors like Deloitte.
+
+A final challenge for our team was creating a data-driven solution with no data scientists on our team. With three developers and one business analyst, we had a lot to learn about data science during the build phase. Online research and working with teams within RBC helped us overcome this challenge.
+
+
+# 10. Future Roadmap
+<p align="center">
+    <img src='./images/roadmap.png'>
+</p>
+
+## 10.1 Millennial Website
+The millennial website can be built on Salesforce using Experience Cloud Community. The Experience Cloud site is a beautifully branded digital experience connected to the Salesforce CRM. Since the site will live in our Salesforce org, FA’s can choose exactly how their clients access content.
+To create the website:
+* From Setup, enter 'Digital Experiences' in the Quick Find box
+* Select 'Sites', and then click 'New Site'
+* The creation wizard opens with several templates to choose from. We can select a template, learn more about the key features, or create our own
+* Select 'Get Started'
+* Enter the name for the website and the URL
+* Lastly, select 'Create' to create the site in Preview state
+* The site can then be customized, managed, and moderated
+
+## 10.2 Financial Advisor Dashboard
+Our current dashboard is in Beta version. After implementing the features listed below we will release our first version of the Salesforce FA Dashboard:
+* Search by client name and account number
+* Filter by total asset value
+* Filter by status for leads and referrals
+* Extending to have options for Gen-Z and other clientele
+* Restrict access based on primary rep code - only show data for clients and referrals for the logged-in rep code
+* Migrate data from the dashboard to Marketing Campaign Central
+* Updating dataflow to include more information on leads, client and beneficiary relationships
+* Updating dataflow to include beneficiary percentage and role (primary, secondary, contingent)
+* Adding more widgets to visualize the data
+* Adding task and event widgets
+* Automating the process of adding tasks for beneficiaries
+* Automating the process of adding educational material including trending topics
+
+
+
+
+# 11. Authors
+* Ritika Chowdhury - Business Analyst
+* Hadia Gueye - Developer
+* Sumaira Shahzad - Developer
+* Jessica Adamec - Developer
+
+
+# 12. Acknowledgements
+A special thank you to everyone who supported us on our project journey!
+
+## 12.1 Team Leads
+* Bill Wilson
+* Rohit Gupta
+
+## 12.2 Executive Sponsors & Mentors
+* Michael Palmer - Sponsor
+* Greg Beltzer - Sponsor
+* Sarah Feroz - Alumni Mentor
+* Martin Mendoza - Tech Mentor
+* Samiul Haque - Tech Mentor
+* Soojin Cha - Design Mentor
+* Mackenzie Hung - Design Mentor
+* Ameel Baig - Business Mentor
+* Neda Paryab - Data Science Mentor
+
+## 12.3 TAB
+* Hussain Subhani
+* Duke Butler
+* Diane Fenton - TAB and Data Science Mentor
+
+## 12.4 Amplify Program Team
+* Rachael Rishworth - Manager and Program Rep
+* Alyssa Citrigno - Senior Manager
+* Aaron Yem - Tech Director
+* Arun Sampath - Communications Analyst
+* Julia Rikic - Manager
+* Catherine Monteith-Pistor - Community Manager
+* Meagan Fillion - Senior Director
+* Karen Irvine - Director
+* Lauren Piccoli - Sr. Recruiter and Resume Expert
+* Jamie Holman - Manager
+
+## 12.5 RBC WM Internship Program
+* Aaron Merwin
+* Ruchir Jaipuriyar
+* Courtney Johnston
+* Jaehwa Flandermeyer
+
+## 12.6 RBC Employees and Vendors
+* Vikesh Nemani - Head, RBC U.S. Wealth Management Strategy
+* Min Luo - Data scientist with Amplify 2020 - Team Norman
+* Sebastian Chavez - BA with Amplify 2020 - Team Norman
+* Eliza Brooks - Salesforce Expert
+* Jamison Hull - Salesforce Data Expert
+* Danielle Bryant - Sr. Technology Experience Consultant
+* Andrew Leonard - Financial Advisor (FA)
+* Evan Malone - FA
+* Natalie Miller - FA
+* Brandon Fancher - FA
+* Elise Morales - Client Associate, Branch Service Manager
+* Nhi Vuong - RBC (Front Office)
+* Tiffany Alvear - RBC
+* Ameera Ali- Intern at RBC WM (Marketing)
+* Grace Abifarin - Intern at RBC WM (Clearing & Custody)
+
+## 12.7 Other
+* Sample readme from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+
+
+# 13 Logo Description
+<p align="center">
+    <img src='./images/millennials-logo.JPG'>
+</p>
+<p align="center">
+    <img src='./images/fa-logo.JPG'>
+</p>
+<p align="center">
+    <img src='./images/ascend_logo.JPG'>
+</p>
+Ascend helps millennials and financial advisors reach their highest potential. With Ascend, RBC is now ready to welcome this new generation. Our logo showcases how millennials and financial advisors can come together and change the future of wealth management. RBC is trying to build their brand awareness in the US and it has been an important factor in all our marketing campaigns. The Ascend logo uses blue and yellow, similar to the RBC logo to make sure we are reminding users about the bank and its services. The blue color is for millennials which signifies that they can trust RBC with their financial goals and the yellow for financial advisors is associated with clarity in helping millennials reach their highest potential.
