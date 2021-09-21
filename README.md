@@ -1,7 +1,7 @@
 # Team Ascend - Create your path, find your journey!
 
 <p align="center">
-    <img src='./desktop/ascend_logo.JPG'>
+   <img width="262" alt="image" src="https://user-images.githubusercontent.com/35118157/132926443-abeb1e88-90b9-41ea-863e-b3b83c86c91d.png">
 </p>
 
 Ascend is a two-part solution which consists of a website and a dashboard aimed at attracting millennial clients and retaining beneficiaries. Ascend creates a seamless experience for both clients and financial advisors.
